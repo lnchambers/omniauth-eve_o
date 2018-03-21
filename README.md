@@ -1,11 +1,6 @@
-# Warning
-Gem in currently in production. Please feel free to submit pull requests
-
 # Omniauth::EveO
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omniauth/eve_o`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to OmniAuth-Eve_O! This is a strategy for using OmniAuth with Eve Online. See the most updated README on the [GitHub]('http://www.github.com/lnchambers/omniauth-eve_o') page.
 
 ## Installation
 
@@ -25,7 +20,42 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Go to the [Eve Online Developer](https://developers.eveonline.com/) site and register your application
+
+When registering your application, set the callback_url to `http://<your website domain>/auth/eve_o/callback`
+
+### In Rails
+
+  Touch `/config/initializers/omniauth.rb`
+
+  Add the following code to omniauth.rb
+
+```ruby
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :eve_o, 'client_id', 'client_secret'
+  end
+```
+
+  Although scope is optional in Eve_O, it is recommended to have it set based on the permissions you set when you set up your application on the [Eve Online Developer](https://developers.eveonline.com/) site.
+
+```ruby
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :eve_o, 'client_id', 'client_secret', scope: 'publicData structureVulnUpdate'
+  end
+```
+
+  In your program, when users want to log in, redirect them to `auth/eve_o`. They will be directed to the Eve Online sign on and will follow the process.
+
+  The `auth_hash` returned should look something like this:
+
+```ruby
+  {
+    "access_token":"uNEEh...a_WpiaA2",
+    "token_type":"Bearer",
+    "expires_in":1200,
+    "refresh_token":"gEy...fM0"
+  }
+```
 
 ## Development
 
@@ -35,7 +65,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/omniauth-eve_o. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/lnchambers/omniauth-eve_o. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

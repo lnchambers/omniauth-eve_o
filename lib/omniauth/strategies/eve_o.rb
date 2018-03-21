@@ -9,6 +9,8 @@ module OmniAuth
         token_url: 'https://login.eveonline.com/oauth/token'
       }
 
+      option :name, 'eve_o'
+
       uid { raw_info['CharacterID'] }
 
       info do

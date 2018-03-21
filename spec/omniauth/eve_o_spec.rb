@@ -17,7 +17,7 @@ RSpec.describe OmniAuth::Strategies::EveO do
   end
 
   it "has a version number" do
-    expect(OmniAuth::EveO::VERSION).to eq("0.1.0")
+    expect(OmniAuth::EveO::VERSION).to_not be(nil)
   end
 
   it "has the correct url" do

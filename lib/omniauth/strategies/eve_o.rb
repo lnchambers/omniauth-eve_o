@@ -29,7 +29,7 @@ module OmniAuth
       end
 
       def raw_info
-        raw_info ||= access_token.get('/oauth/verify').parsed
+        @raw_info ||= access_token.get('/oauth/verify').parsed
       end
 
       def authorize_params

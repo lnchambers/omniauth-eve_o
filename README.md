@@ -1,5 +1,7 @@
 # Omniauth::EveO
 
+[![Gem Version](https://badge.fury.io/rb/omniauth-eve_o.svg)](https://badge.fury.io/rb/omniauth-eve_o)
+
 Welcome to OmniAuth-Eve_O! This is a strategy for using OmniAuth with Eve Online. See the most updated README on the [GitHub]('http://www.github.com/lnchambers/omniauth-eve_o') page.
 
 ## Installation
